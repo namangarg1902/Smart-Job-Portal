@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Web Design Mastery | Learning Landing Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <nav>
+      <div class="nav__logo"><a href="#">JobHub</a></div>
+      <ul class="nav__links">
+        <li class="link"><a href="https://www.linkedin.com/in/naman-garg-b0b041227/" class="nav__btn">Contact Developer</a></li>
+      </ul>
+    </nav>
+    <section class="container">
+      <div class="content__container">
+        <h1>
+          Ignite<br />
+          <span class="heading__1">Your Career Journey</span><br />
+          <span class="heading__2">With Limitless</span>
+          <span class="heading__2">Opportunities</span>
+          <!-- Your Gateway to Exciting Career Opportunities! -->
+        </h1>
+        <p>
+          Are you ready to turn your career aspirations into reality?This is not just a job portal; it's your personal career concierge, designed to unleash a world of exciting opportunities right at your fingertips!
+        </p>
+        <p>
+          Why Settle When You Can Soar? Dive into Your Dream Career Today!
+        </p>
+        <form method="post" action="/">
+          <input type="text" id="user_input" name="user_input" placeholder="Search here..."/>
+          <button type="submit">Search Jobs</button>
+        </form>
+      </div>
+      <div class="image__container">
+        <img src="{{ url_for('static', filename='/images/header-1.jpg') }}" alt="header" />
+        <img src="{{ url_for('static', filename='/images/header-2.jpg') }}" alt="header" />
+        <div class="image__content">
+          <ul style="list-style: none;">
+            <li>Your Gateway To </li>
+            <li>Exciting Career Opportunities!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="jobs-list-container">
+        <!-- <h2>Sample Text</h2> -->
+  
+        <!-- <input class="job-search" type="text" placeholder="Search here..." /> -->
+  
+        <!-- <form method="post" action="/">
+          <input class="job-search" type="text" id="user_input" name="user_input" placeholder="Search here..." />
+          <button type="submit">Submit</button>
+      </form> -->
+  
+  
+      
+  
+        {% if jsonData1 %}
+        <h2>Job Listings from Shine</h2>
+        <div class="jobs">
+            {% for category, job in jsonData1.items() %}
+              <div class="job">
+                <img src="{{ url_for('static', filename='/images/software-engineer.svg') }}" alt="">
+                <h3 class="job-title">{{ job['Position'] }}</h3>
+                <div class="details">
+                  {{ job['Company'] }}
+                </div>
+                <div class="open-positions">
+                  latest
+                </div>
+                <a href="{{ job['Apply Now'] }}" class="details-btn">More Details</a>
+  
+                
+              </div>
+            {% endfor %}
+          
+          </div>
+        {% endif %}
+  
+        <br>
+  
+  
+        <br>
+        <br>
+        
+  
+  
+        {% if jsonData2 %}
+        <h2>Job Listings from  Times.com</h2>
+        <div class="jobs">
+            {% for category, job in jsonData2.items() %}
+              <div class="job">
+                <img src="{{ url_for('static', filename='/images/project-manager.svg') }}" alt="">
+                <h3 class="job-title">{{ job['Position'] }}</h3>
+                <div class="details">
+                  {{ job['Company'] }}
+                </div>
+                <div class="open-positions">
+                  latest
+                </div>
+                <a href="{{ job['Apply Now'] }}" class="details-btn">More Details</a>
+  
+                
+              </div>
+            {% endfor %}
+          
+          </div>
+        {% endif %}
+  
+      </div>
+    </section>
+  </body>
+</html>
