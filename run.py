@@ -13,17 +13,6 @@ def index():
         jsonData2 =fetch_times(user_input)
         
     return render_template('index.html' , jsonData1 = jsonData1 , jsonData2 = jsonData2)
-    
-
-    # return render_template('index.html', jsonData=(jsonData))
-
-
-    # Call your Python function that returns JSON data
-    # json_data = lambda_handler("Developer")
-    # print(json_data)
-    # return render_template('index.html', jsonData=(json_data))
-
-    # return jsonify(json_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
